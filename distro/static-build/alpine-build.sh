@@ -211,6 +211,7 @@ cd "$DIST_DIR"
 
 cp -r "$ROOT_DIR/freekill-asio/packages" .
 rm -f packages/.gitignore
+echo '[+] 复制 packages'
 
 cp -r "$ROOT_DIR/freekill-asio/server" .
 cp -r "$ROOT_DIR/freekill-asio/freekill.server.config.json.example" .
