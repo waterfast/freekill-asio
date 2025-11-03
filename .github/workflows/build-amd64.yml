@@ -63,7 +63,6 @@ jobs:
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
-        token: ${{ secrets.MY_TOKEN }}
         tag_name: ${{ steps.previoustag.outputs.tag }}
         files: zip/freekill-asio-static-${{ steps.previoustag.outputs.tag }}-amd64.tar.gz
 
