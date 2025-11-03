@@ -1,0 +1,26 @@
+# Compile output
+/build/
+/docs/build
+/docs/.venv
+/*.o
+
+# IDE & LSP
+/.kdev4/
+/.vscode/
+/*.user
+*-swp
+/*.kdev4
+/.cache/
+/tags
+.clangd
+
+# file produced by game
+/freekill-asio
+/server/*
+!/server/init.sql
+!/server/gamedb_init.sql
+/freekill.server.config.json
+/freekill.server.*log
+/freekill.*log
+/flist.txt
+/server-list.json
