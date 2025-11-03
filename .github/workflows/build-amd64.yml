@@ -20,7 +20,7 @@ jobs:
         packages: curl
 
     - name: Run build script
-      run: curl -fsSL https://raw.githubusercontent.com/waterfast/fk-asio/refs/heads/master/distro/static-build/alpine-build.sh | sh
+      run: curl -fsSL https://raw.githubusercontent.com/waterfast/freekill-asio/refs/heads/master/distro/static-build/alpine-build.sh | sh
       shell: alpine.sh --root {0}
 
     - name: Copy release zip
