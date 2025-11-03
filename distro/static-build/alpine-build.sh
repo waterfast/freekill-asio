@@ -183,12 +183,12 @@ gcc src/lua_patched.c -o lua \
 if [ ! -d "$ROOT_DIR/freekill-asio" ]; then
   echo '[+] 克隆 freekill-asio'
   cd "$ROOT_DIR"
-  git clone https://github.com/waterfast/fk-asio.git
+  git clone https://github.com/waterfast/freekill-asio
 fi
 
-if [ ! -f "$ROOT_DIR/fk-asio/build/fk-asio" ]; then
+if [ ! -f "$ROOT_DIR/freekill-asio/build/freekill-asio" ]; then
   echo '[+] 静态编译 freekill-asio'
-  cd "$ROOT_DIR/fk-asio"
+  cd "$ROOT_DIR/freekill-asio"
   mkdir -p build && cd build
   cmake .. --toolchain=../distro/static-build/alpine_static.cmake 2&>/dev/null || true
   cmake .. --toolchain=../distro/static-build/alpine_static.cmake || true
@@ -209,11 +209,11 @@ mkdir -p "$DIST_DIR"
 
 cd "$DIST_DIR"
 
-cp -r "$ROOT_DIR/fk-asio/packages" .
+cp -r "$ROOT_DIR/freekill-asio/packages" .
 rm -f packages/.gitignore
 
-cp -r "$ROOT_DIR/fk-asio/server" .
-cp -r "$ROOT_DIR/fk-asio/server.config.json.example" .
+cp -r "$ROOT_DIR/freekill-asio/server" .
+cp -r "$ROOT_DIR/freekill.server.config.json.example" .
 
 # 复制 CA 证书
 mkdir -p certs
@@ -221,7 +221,7 @@ cp -rL /etc/ssl/certs/* certs/ 2>/dev/null || true
 
 # 创建 bin 目录并复制二进制
 mkdir -p bin
-cp "$ROOT_DIR/fk-asio/build/fk-asio" bin/
+cp "$ROOT_DIR/freekill-asio/build/freekill-asio" bin/
 cp "$LUA_DIR/lua" bin/lua5.4
 
 strip bin/freekill-asio
@@ -232,7 +232,7 @@ mkdir -p luasocket
 cp "$LUASOCKET_DIR/src/"*.lua luasocket/
 
 # 创建启动脚本
-cat << 'EOF' > fk-asio
+cat << 'EOF' > freekill-asio
 #!/bin/sh
 
 # 令freekill-asio在execlp时能找到lua5.4
